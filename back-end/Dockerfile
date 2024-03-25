@@ -1,5 +1,9 @@
 # Install node image in container
+<<<<<<< HEAD
 FROM node:11.10.1
+=======
+FROM node:16
+>>>>>>> 0f3f6fb (Initial commit)
 
 # Install nodemon for hot reloading
 RUN npm install -g nodemon

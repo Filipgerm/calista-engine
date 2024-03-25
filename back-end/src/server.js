@@ -57,6 +57,12 @@ function processInputUrl(url) {
 
 async function getWebpageImage(url, imagePath) {
 
+<<<<<<< HEAD
+=======
+  // const browser = await puppeteer.launch({
+  //  ...config.launchOptions,
+  //  dumpio: true });
+>>>>>>> 0f3f6fb (Initial commit)
   return puppeteer.launch(config.launchOptions)
     .then(async browser => {
 

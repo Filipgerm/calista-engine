@@ -10,6 +10,10 @@ import numpy as np
 import keras
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
+<<<<<<< HEAD
+=======
+import os
+>>>>>>> 0f3f6fb (Initial commit)
 
 app = Flask(__name__)
 CORS(app)
@@ -18,6 +22,11 @@ model = None
 
 def load_cnn_model():
 	global model
+<<<<<<< HEAD
+=======
+	global graph
+	graph = tf.compat.v1.get_default_graph()
+>>>>>>> 0f3f6fb (Initial commit)
 	model = load_model('./cnn_model/calista_comparison_based.h5', \
 	    custom_objects = {
 			'LRN': layers.LRN,
@@ -26,15 +35,44 @@ def load_cnn_model():
 		})
 	model.summary()
 	print('[*] Model loaded')
+<<<<<<< HEAD
 	global graph
 	graph = tf.get_default_graph()
+=======
+
+>>>>>>> 0f3f6fb (Initial commit)
 
 @app.route('/')
 def index():
 	return "Flask server"
 
+<<<<<<< HEAD
 @app.route('/run_cnn', methods = ['POST'])
 def postdata():
+=======
+graph = tf.compat.v1.get_default_graph()
+
+@app.route('/run_cnn', methods = ['POST'])
+def postdata():
+
+
+	# model_path = './cnn_model/calista_comparison_based.h5'
+	# print("Checking if model file exists:", os.path.exists(model_path))
+
+	# # Check file existence
+	# if os.path.exists(model_path):
+	# 	# Load the model
+	# 	model = load_model(model_path)
+		
+	# 	# Print model summary
+	# 	print("Model loaded successfully. Summary:", file=sys.stderr)
+	# 	model.summary()
+	# else:
+	# 	print("Model file not found at the specified path:", file=sys.stderr)
+
+
+
+>>>>>>> 0f3f6fb (Initial commit)
 	data = request.get_json()
 
 	imagePath = data.get('imagePath')
@@ -44,10 +82,18 @@ def postdata():
 
 	test_datagen = ImageDataGenerator(rescale = 1./255)
 	test_data = test_datagen.flow(input_image, batch_size=1, shuffle=False).next()
+<<<<<<< HEAD
 
 	with graph.as_default():
 		score = model.predict(test_data)
 		score = float(score)
+=======
+	with graph.as_default():
+		score = model.predict(test_data)
+		score = float(score)
+		
+
+>>>>>>> 0f3f6fb (Initial commit)
 
 		# score bound protection
 		score = np.minimum(score, 10.0)

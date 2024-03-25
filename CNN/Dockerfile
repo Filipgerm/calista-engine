@@ -2,11 +2,19 @@
 FROM python:3.7
 
 RUN apt-get update && \
+<<<<<<< HEAD
     apt-get -y install netcat && \
     apt-get clean && \
     apt-get install -y python3-opencv
 
 # Create and set the working directory
+=======
+    apt-get -y install netcat-openbsd && \
+    apt-get clean && \
+    apt-get install -y python3-opencv
+
+# Create and set the working directoryRadio. 
+>>>>>>> 0f3f6fb (Initial commit)
 RUN mkdir -p /app/cnn
 WORKDIR /app/cnn
 
