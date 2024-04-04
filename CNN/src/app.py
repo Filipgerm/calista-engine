@@ -35,27 +35,9 @@ def load_cnn_model():
 def index():
 	return "Flask server"
 
-graph = tf.compat.v1.get_default_graph()
 
 @app.route('/run_cnn', methods = ['POST'])
 def postdata():
-
-
-	# model_path = './cnn_model/calista_comparison_based.h5'
-	# print("Checking if model file exists:", os.path.exists(model_path))
-
-	# # Check file existence
-	# if os.path.exists(model_path):
-	# 	# Load the model
-	# 	model = load_model(model_path)
-		
-	# 	# Print model summary
-	# 	print("Model loaded successfully. Summary:", file=sys.stderr)
-	# 	model.summary()
-	# else:
-	# 	print("Model file not found at the specified path:", file=sys.stderr)
-
-
 
 	data = request.get_json()
 
@@ -70,7 +52,7 @@ def postdata():
 		score = model.predict(test_data)
 		score = float(score)
 		
-
+	
 
 		# score bound protection
 		score = np.minimum(score, 10.0)
