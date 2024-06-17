@@ -51,6 +51,7 @@ class SearchDisplay extends Component {
          this.setState({statusCode: 3})
       })
       .catch(err => {
+        console.log(err)
         let status = err.response.status
 
         // DEBUGGING PURPOSES
